@@ -1,18 +1,47 @@
-@model TModel
+@model Mission06_Fox.Models.Movie
 
-@{
-    Layout = null;
-}
+<h2>Add a Movie</h2>
 
-<!DOCTYPE html>
+<form method="post">
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+    <label asp-for="Category"></label>
+    <input asp-for="Category" />
+    <br />
+
+    <label asp-for="Title"></label>
+    <input asp-for="Title" />
+    <br />
+
+    <label asp-for="Year"></label>
+    <input asp-for="Year" />
+    <br />
+
+    <label asp-for="Director"></label>
+    <input asp-for="Director" />
+    <br />
+
+    <label asp-for="Rating"></label>
+    <select asp-for="Rating">
+        <option value="">Select One</option>
+        <option>G</option>
+        <option>PG</option>
+        <option>PG-13</option>
+        <option>R</option>
+    </select>
+    <br />
+
+    <label asp-for="Edited">Edited</label>
+    <input asp-for="Edited" type="checkbox" />
+    <br />
+
+    <label asp-for="LentTo"></label>
+    <input asp-for="LentTo" />
+    <br />
+
+    <label asp-for="Notes"></label>
+    <input asp-for="Notes" maxlength="25" />
+    <br />
+
+    <button type="submit">Submit</button>
+
+</form>

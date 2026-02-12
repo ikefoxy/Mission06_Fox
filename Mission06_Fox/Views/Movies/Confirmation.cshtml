@@ -1,18 +1,18 @@
-@model TModel
+@model Mission06_Fox.Models.Movie
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Confirmation";
 }
 
-<!DOCTYPE html>
+<!-- Page heading -->
+<h1>Movie Added Successfully</h1>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<!-- Show the movie the user submitted -->
+<p>
+    Thank you for adding <strong>@Model.Title</strong> to the collection.
+</p>
+
+<!-- Easy way back to add another -->
+<a asp-action="Create" class="btn btn-primary mt-3">
+    Add Another Movie
+</a>

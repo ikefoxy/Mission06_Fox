@@ -1,12 +1,13 @@
 @model Mission06_Fox.Models.Movie
 
 @{
-    ViewData["Title"] = "Add Movie";
+    ViewData["Title"] = "Edit Movie";
 }
 
-<h1 class="mb-4">Add a Movie</h1>
+<h1 class="mb-4">Edit Movie</h1>
 
-<form method="post">
+<form method="post" class="mb-3">
+    <input type="hidden" asp-for="MovieId" />
 
     <div class="mb-3">
         <label asp-for="CategoryId" class="form-label">Category ID</label>
@@ -42,11 +43,11 @@
     <div class="mb-3">
         <label class="form-label">Edited</label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="Edited" value="true" @(Model?.Edited == true ? "checked" : "") />
+            <input class="form-check-input" type="radio" name="Edited" value="true" @(Model.Edited == true ? "checked" : "") />
             <label class="form-check-label">Yes</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="Edited" value="false" @(Model?.Edited == false ? "checked" : "") />
+            <input class="form-check-input" type="radio" name="Edited" value="false" @(Model.Edited == false ? "checked" : "") />
             <label class="form-check-label">No</label>
         </div>
         <span asp-validation-for="Edited" class="text-danger"></span>
@@ -62,11 +63,11 @@
     <div class="mb-3">
         <label class="form-label">Copied To Plex</label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="CopiedToPlex" value="true" @(Model?.CopiedToPlex == true ? "checked" : "") />
+            <input class="form-check-input" type="radio" name="CopiedToPlex" value="true" @(Model.CopiedToPlex == true ? "checked" : "") />
             <label class="form-check-label">Yes</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="CopiedToPlex" value="false" @(Model?.CopiedToPlex == false ? "checked" : "") />
+            <input class="form-check-input" type="radio" name="CopiedToPlex" value="false" @(Model.CopiedToPlex == false ? "checked" : "") />
             <label class="form-check-label">No</label>
         </div>
         <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
@@ -79,7 +80,8 @@
         <div class="form-text">Max 25 characters.</div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="List" class="btn btn-secondary ms-2">Cancel</a>
 </form>
 
 @section Scripts {

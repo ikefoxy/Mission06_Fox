@@ -8,6 +8,10 @@ namespace Mission06_Fox.Models
         {
         }
 
+        // Movies table
         public DbSet<Movie> Movies { get; set; }
+
+        // Categories table (needed for foreign key + dropdown)
+        public DbSet<Category> Categories { get; set; }
     }
 }

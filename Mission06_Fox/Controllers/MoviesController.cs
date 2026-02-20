@@ -13,12 +13,22 @@ namespace Mission06_Fox.Controllers
             _context = temp;
         }
 
+        // Helper to populate dropdown
+        private void LoadCategories()
+        {
+            ViewBag.Categories = _context.Categories
+                .AsNoTracking()
+                .OrderBy(c => c.CategoryName)
+                .ToList();
+        }
+
         // -------------------------
         // CREATE
         // -------------------------
         [HttpGet]
         public IActionResult Create()
         {
+            LoadCategories();
             return View();
         }
 
@@ -37,6 +47,8 @@ namespace Mission06_Fox.Controllers
                 return View("Confirmation", response);
             }
 
+            // Reload categories so dropdown still shows after validation errors
+            LoadCategories();
             return View(response);
         }
 
@@ -67,6 +79,7 @@ namespace Mission06_Fox.Controllers
                 return NotFound();
             }
 
+            LoadCategories();
             return View(movie);
         }
 
@@ -75,7 +88,6 @@ namespace Mission06_Fox.Controllers
         {
             if (ModelState.IsValid)
             {
-                // DB columns are NOT NULL, but model is bool?
                 updatedMovie.Edited = updatedMovie.Edited ?? false;
                 updatedMovie.CopiedToPlex = updatedMovie.CopiedToPlex ?? false;
 
@@ -85,6 +97,7 @@ namespace Mission06_Fox.Controllers
                 return RedirectToAction("List");
             }
 
+            LoadCategories();
             return View(updatedMovie);
         }
 
